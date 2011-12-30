@@ -6,7 +6,7 @@ A simple PHP INI (or plain array) configuration class with dot-notation access
 
 Somehow I have struggled to find a lightweight class that:
 
-* Is small, simple and unit-tested [![Build Status](http://travis-ci.org/searbe/brite-config.png)](http://travis-ci.org/searbe/brite-config)
+* Is small, simple and unit-tested [![Build Status](https://secure.travis-ci.org/searbe/brite-config.png)](http://travis-ci.org/searbe/brite-config)
 * Parses both INI files and PHP arrays
 * Deals with inheritance
 
