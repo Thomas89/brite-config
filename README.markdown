@@ -64,16 +64,20 @@ During bootstrap, register your configuration file:
 
     <?php
     
-    \brite\Config::register('default', __DIR__ . '/test_config/config.php', 'staging');
+    use brite\config\Config;
+    
+    Config::register('default', __DIR__ . '/test_config/config.php', 'staging');
     
 
 Then access your configuration when required:
 
     <?php
     
-    echo \brite\Config::instance()->get('database.host');
+    use brite\config\Config;
+    
+    echo Config::instance()->get('database.host');
     \\ output: "bar"
-    echo \brite\Config::instance()->get('database.user');
+    echo Config::instance()->get('database.user');
     \\ output: "foo1"
     
 
@@ -83,7 +87,9 @@ via:
 
     <?php
     
-    echo \brite\Config::instance('database')->get('host');
+    use brite\config\Config;
+    
+    echo Config::instance('database')->get('host');
 
 
 Or if you prefer, you may simple create an instance of a configuration class and
@@ -91,7 +97,9 @@ register it with your own registry for global access:
 
     <?php
     
-    $config = new \brite\IniConfig('/path/to/file.ini', 'section-name');
+    use brite\config\IniConfig;
+    
+    $config = new IniConfig('/path/to/file.ini', 'section-name');
     
     // Now register $config with your registry
 
