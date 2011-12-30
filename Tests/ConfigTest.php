@@ -2,9 +2,9 @@
 
 require_once 'autoload.php';
 
-use Brite\Config\PhpConfig,
-    Brite\Config\ArrayConfig,
-    Brite\Config\Config;
+use brite\config\PhpConfig,
+    brite\config\ArrayConfig,
+    brite\config\Config;
 
 class ConfigTest extends PHPUnit_Framework_TestCase {
     public function testParsePhp() {

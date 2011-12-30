@@ -1,6 +1,6 @@
 <?php
 
-namespace Brite\Config;
+namespace brite\config;
 
 abstract class Config {
     protected static $_registry = array();

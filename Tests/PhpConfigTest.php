@@ -2,9 +2,9 @@
 
 require_once 'autoload.php';
 
-use Brite\Config\PhpConfig,
-    Brite\Config\ArrayConfig,
-    Brite\Config\Config;
+use brite\config\PhpConfig,
+    brite\config\ArrayConfig,
+    brite\config\Config;
 
 class PhpConfigTest extends PHPUnit_Framework_TestCase {
     protected function _newConfig($section) {

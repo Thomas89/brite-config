@@ -1,6 +1,6 @@
 <?php
 
-namespace Brite\Config;
+namespace brite\config;
 
 class IniConfig extends Config {
     public function __construct($path, $section) {
