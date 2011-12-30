@@ -1,8 +1,8 @@
 Brite Config
 ============
 
-A simple PHP configuration class with dot-notation access
----------------------------------------------------------
+A simple PHP INI (or plain array) configuration class with dot-notation access
+------------------------------------------------------------------------------
 
 Somehow I have struggled to find a lightweight class that:
 
@@ -48,33 +48,32 @@ Or alternatively, if you prefer plain PHP arrays:
     $config['default']['database']['pass'] = 'baz';
     
     $config['default']['service']['api_key'] = '123456';
+    $config['default']['email'] = 'test@dev.com';
     
     $config['production']['extends'] = 'staging';
     $config['production']['database']['user'] = 'foo1';
     $config['production']['database']['pass'] = 'baz1';
+    $config['production']['email'] = 'test@production.com';
     
     $config['staging']['extends'] = 'default';
     $config['staging']['database']['user'] = 'foo2';
     $config['staging']['database']['pass'] = 'baz2';
-    
-    $config['default']['email'] = 'test@dev.com';
-    $config['production']['email'] = 'test@production.com';
 
 
 During bootstrap, register your configuration file:
 
     <?php
     
-    \Brite\Config::register('default', __DIR__ . '/test_config/config.php', 'staging');
+    \brite\Config::register('default', __DIR__ . '/test_config/config.php', 'staging');
     
 
 Then access your configuration when required:
 
     <?php
     
-    echo \Brite\Config::instance()->get('database.host');
+    echo \brite\Config::instance()->get('database.host');
     \\ output: "bar"
-    echo \Brite\Config::instance()->get('database.user');
+    echo \brite\Config::instance()->get('database.user');
     \\ output: "foo1"
     
 
@@ -84,7 +83,7 @@ via:
 
     <?php
     
-    echo \Brite\Config::instance('database')->get('host');
+    echo \brite\Config::instance('database')->get('host');
 
 
 Or if you prefer, you may simple create an instance of a configuration class and
@@ -92,7 +91,7 @@ register it with your own registry for global access:
 
     <?php
     
-    $config = new \Brite\IniConfig('/path/to/file.ini', 'section-name');
+    $config = new \brite\IniConfig('/path/to/file.ini', 'section-name');
     
     // Now register $config with your registry
 
