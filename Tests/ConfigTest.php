@@ -10,13 +10,13 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
     public function testParsePhp() {
         Config::unregister();
         $config = Config::register('php', __DIR__ . '/test_config/config.php', 'production');
-        $this->assertInstanceOf('\Brite\Config\PhpConfig', $config);
+        $this->assertInstanceOf('\brite\config\PhpConfig', $config);
     }
     
     public function testParseIni() {
         Config::unregister();
         $config = Config::register('ini', __DIR__ . '/test_config/config.ini', 'production');
-        $this->assertInstanceOf('\Brite\Config\IniConfig', $config);
+        $this->assertInstanceOf('\brite\config\IniConfig', $config);
     }
     
     public function testMultipleInstances() {
@@ -27,10 +27,10 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
         $phpb = Config::instance('php');
         $inib = Config::instance('ini');
         
-        $this->assertInstanceOf('\Brite\Config\PhpConfig', $phpb);
+        $this->assertInstanceOf('\brite\config\PhpConfig', $phpb);
         $this->assertSame($phpa, $phpb);
         
-        $this->assertInstanceOf('\Brite\Config\IniConfig', $inib);
+        $this->assertInstanceOf('\brite\config\IniConfig', $inib);
         $this->assertSame($inia, $inib);
     }
     

@@ -42,7 +42,7 @@ abstract class Config {
     public static function register($name, $path, $section) {
         $format = substr(strrchr($path, '.'), 1);
         
-        $class  = '\\Brite\\Config\\' . ucfirst($format) . 'Config';
+        $class  = '\\brite\\config\\' . ucfirst($format) . 'Config';
         
         self::$_registry[$name] = new $class($path, $section);
         
