@@ -78,9 +78,9 @@ Then access your configuration when required:
     use brite\config\Config;
     
     echo Config::instance()->get('database.host');
-    \\ output: "bar"
+    // output: "bar"
     echo Config::instance()->get('database.user');
-    \\ output: "foo1"
+    // output: "foo1"
 ```
 
 Alternatively, if you have multiple configuration files, you may name your
