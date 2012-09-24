@@ -1,0 +1,23 @@
+{
+    "name": "searbe/brite-config",
+    "type": "library",
+    "description": "A simple PHP INI (or plain array) configuration class with dot-notation access",
+    "keywords": ["config","dot-notation"],
+    "homepage": "https://github.com/searbe/brite-config",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Craig Bendell",
+            "homepage": "https://github.com/searbe"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-0": {
+            "brite\\config": ""
+        }
+    },
+    "target-dir": "brite/config"
+}
