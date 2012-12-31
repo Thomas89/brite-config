@@ -2,21 +2,21 @@
 
 require_once 'autoload.php';
 
-use brite\config\PhpConfig,
-    brite\config\ArrayConfig,
-    brite\config\Config;
+use Brite\Config\PhpConfig,
+    Brite\Config\ArrayConfig,
+    Brite\Config\Config;
 
 class ConfigTest extends PHPUnit_Framework_TestCase {
     public function testParsePhp() {
         Config::unregister();
         $config = Config::register('php', __DIR__ . '/test_config/config.php', 'production');
-        $this->assertInstanceOf('\brite\config\PhpConfig', $config);
+        $this->assertInstanceOf('\Brite\Config\PhpConfig', $config);
     }
     
     public function testParseIni() {
         Config::unregister();
         $config = Config::register('ini', __DIR__ . '/test_config/config.ini', 'production');
-        $this->assertInstanceOf('\brite\config\IniConfig', $config);
+        $this->assertInstanceOf('\Brite\Config\IniConfig', $config);
     }
     
     public function testMultipleInstances() {
@@ -27,10 +27,10 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
         $phpb = Config::instance('php');
         $inib = Config::instance('ini');
         
-        $this->assertInstanceOf('\brite\config\PhpConfig', $phpb);
+        $this->assertInstanceOf('\Brite\Config\PhpConfig', $phpb);
         $this->assertSame($phpa, $phpb);
         
-        $this->assertInstanceOf('\brite\config\IniConfig', $inib);
+        $this->assertInstanceOf('\Brite\Config\IniConfig', $inib);
         $this->assertSame($inia, $inib);
     }
     

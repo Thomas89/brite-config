@@ -1,6 +1,6 @@
 <?php
 
-namespace brite\config;
+namespace Brite\Config;
 
 abstract class Config {
     protected static $_registry = array();
@@ -42,7 +42,7 @@ abstract class Config {
     public static function register($name, $path, $section) {
         $format = substr(strrchr($path, '.'), 1);
         
-        $class  = '\\brite\\config\\' . ucfirst($format) . 'Config';
+        $class  = '\\Brite\\Config\\' . ucfirst($format) . 'Config';
         
         self::$_registry[$name] = new $class($path, $section);
         

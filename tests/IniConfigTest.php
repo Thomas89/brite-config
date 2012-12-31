@@ -3,9 +3,9 @@
 require_once 'autoload.php';
 require_once 'PhpConfigTest.php';
 
-use brite\config\PhpConfig,
-    brite\config\ArrayConfig,
-    brite\config\Config;
+use Brite\Config\PhpConfig,
+    Brite\Config\ArrayConfig,
+    Brite\Config\Config;
 
 class IniConfigTest extends PhpConfigTest {
     protected function _newConfig($section) {
