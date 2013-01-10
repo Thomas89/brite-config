@@ -16,8 +16,8 @@
     },
     "autoload": {
         "psr-0": {
-            "brite\\config": ""
+            "Brite\\Config": ""
         }
     },
-    "target-dir": "brite/config"
+    "target-dir": "Brite/Config"
 }

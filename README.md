@@ -67,7 +67,7 @@ During bootstrap, register your configuration file:
 ```php
 <?php
 
-use brite\config\Config;
+use Brite\Config\Config;
 
 Config::register('default', __DIR__ . '/test_config/config.php', 'staging');
 ```
@@ -77,7 +77,7 @@ Then access your configuration when required:
 ```php
 <?php
 
-use brite\config\Config;
+use Brite\Config\Config;
 
 echo Config::instance()->get('database.host');
 // output: "bar"
@@ -92,7 +92,7 @@ via:
 ```php
 <?php
 
-use brite\config\Config;
+use Brite\Config\Config;
 
 echo Config::instance('database')->get('host');
 ```
@@ -103,7 +103,7 @@ register it with your own registry for global access:
 ```php
 <?php
 
-use brite\config\IniConfig;
+use Brite\Config\IniConfig;
 
 $config = new IniConfig('/path/to/file.ini', 'section-name');
 
