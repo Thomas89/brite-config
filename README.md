@@ -4,18 +4,14 @@ Brite Config
 A simple PHP INI (or plain array) configuration class with dot-notation access
 ------------------------------------------------------------------------------
 
-Somehow I have struggled to find a lightweight class that:
-
-* Is small, simple and unit-tested [![Build Status](https://secure.travis-ci.org/searbe/brite-config.png)](http://travis-ci.org/searbe/brite-config)
+* Small, simple and unit-tested [![Build Status](https://secure.travis-ci.org/searbe/brite-config.png)](http://travis-ci.org/searbe/brite-config)
 * Parses both INI files and PHP arrays
-* Deals with inheritance
-
-So I have created that missing class (well, three classes, to be accurate). 
+* Deals allows for configuration inheritance
 
 Usage
 -----
 
-To parse your .ini configuration file, imagine you have the following contents:
+You need a configuration file. Example `.ini` contents:
 
     [default]
     
@@ -62,13 +58,15 @@ $config['staging']['database']['pass'] = 'baz2';
 ```
 
 
-During bootstrap, register your configuration file:
+If you want to use the 'registry', register your configuration file during bootstrap:
 
 ```php
 <?php
 
 use Brite\Config\Config;
 
+// Registering as the 'default' config means you can grab the config
+// without specifying a name.
 Config::register('default', __DIR__ . '/test_config/config.php', 'staging');
 ```
 
@@ -79,9 +77,12 @@ Then access your configuration when required:
 
 use Brite\Config\Config;
 
-echo Config::instance()->get('database.host');
+// This grabs the config registered as 'default'
+$config = Config::instance();
+
+echo $config->get('database.host');
 // output: "bar"
-echo Config::instance()->get('database.user');
+echo $config->get('database.user');
 // output: "foo1"
 ```
 
@@ -94,18 +95,23 @@ via:
 
 use Brite\Config\Config;
 
-echo Config::instance('database')->get('host');
+// This grabs the config registered as 'database'
+$dbConfig = Config::instance('database');
+
+echo $dbConfig->get('host');
+echo $dbConfig->get('user');
 ```
 
-Or if you prefer, you may simple create an instance of a configuration class and
-register it with your own registry for global access:
+However, we all know that global access is bad, right? You can create your
+own instance to contain your configuration, rather than using a global static 
+registry:
 
 ```php
 <?php
 
 use Brite\Config\IniConfig;
 
-$config = new IniConfig('/path/to/file.ini', 'section-name');
+$config = new IniConfig('/path/to/file.ini', 'staging');
 
 // Now register $config with your registry
 ```
