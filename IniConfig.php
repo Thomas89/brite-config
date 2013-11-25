@@ -23,6 +23,9 @@ class IniConfig extends Config {
         }
         
         // Then deal with the extending
+        if (!isset($assoc[$section])) {
+            throw new \InvalidArgumentException("No registered configuration called $section");
+        }
         $array = $assoc[$section];
         $out   = $array;
         
