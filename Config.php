@@ -2,7 +2,7 @@
 
 namespace Brite\Config;
 
-abstract class Config {
+abstract class Config implements \ArrayAccess {
     protected static $_registry = array();
     
     protected $_config = array();
@@ -96,6 +96,28 @@ abstract class Config {
         $this->_setDotNotation($this->_config, $key, $value);
     }
     
+    public function offsetSet($offset, $value) {
+        if (is_null($offset)) {
+            $this->_config[] = $value;
+        } else {
+            $this->_config[$offset] = $value;
+        }
+    }
+
+    public function offsetExists($offset) {
+        return isset($this->_config[$offset]);
+    }
+
+    public function offsetUnset($offset) {
+        unset($this->_config[$offset]);
+    }
+
+    public function offsetGet($offset) {
+        return isset($this->_config[$offset]) ?
+                $this->_config[$offset] :
+                null;
+    }
+    
     protected function _getDotNotation(&$val, $dotNotationKey, $default = null) {
         $p   = explode('.', $dotNotationKey);
         
@@ -148,4 +170,5 @@ abstract class Config {
         
         return $mergeInto;
     }
+    
 }
