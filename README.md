@@ -7,6 +7,7 @@ A simple PHP INI (or plain array) configuration class with dot-notation access
 * Small, simple and unit-tested [![Build Status](https://secure.travis-ci.org/searbe/brite-config.png)](http://travis-ci.org/searbe/brite-config)
 * Parses both INI files and PHP arrays
 * Deals allows for configuration inheritance
+* Available via [Composer / Packagist](https://packagist.org/packages/searbe/brite-config)
 
 Usage
 -----
