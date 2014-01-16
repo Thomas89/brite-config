@@ -45,4 +45,12 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
         
         $this->assertSame($phpa, $phpb);
     }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testNotRegistered() {
+        Config::unregister();
+        Config::instance();
+    }
 }
