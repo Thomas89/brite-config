@@ -51,17 +51,18 @@ abstract class Config implements \ArrayAccess {
     
     /**
      * Retrieve a config object using the name specified when the
-     * config file was registereds
+     * config file was registered
      * 
      * @param string $name name of registered config file to
      *  retrieve
+     * @throws \InvalidArgumentException
      * @return Config
      */
     public static function instance($name = 'default') {
         if (isset(self::$_registry[$name])) {
             return self::$_registry[$name];
         }
-        throw new InvalidArgumentException("No registered configuration called $name");
+        throw new \InvalidArgumentException("No registered configuration called $name");
     }
     
     /**
